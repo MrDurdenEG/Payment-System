@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="system" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/system" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/system" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Application/Application.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Application/Application.h" />
+		<Unit filename="Data_Bases/File_handling/file_handling.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data_Bases/File_handling/file_handling.h" />
+		<Unit filename="Data_structures/List/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data_structures/List/list.h" />
+		<Unit filename="Data_structures/Queue/queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data_structures/Queue/queue.h" />
+		<Unit filename="Data_structures/Stack/stack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Data_structures/Stack/stack.h" />
+		<Unit filename="Libraries/Libraries.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Libraries/Libraries.h" />
+		<Unit filename="Payment_system/Card/card.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Payment_system/Card/card.h" />
+		<Unit filename="Payment_system/Server/server.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Payment_system/Server/server.h" />
+		<Unit filename="Payment_system/Terminal/terminal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Payment_system/Terminal/terminal.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="typedef.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

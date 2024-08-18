@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1723939182 source:c:\users\htech\desktop\system\application\application.c
+
+1723939225 source:c:\users\htech\desktop\system\data_bases\file_handling\file_handling.c
+
+1723939244 source:c:\users\htech\desktop\system\data_structures\list\list.c
+
+1723939261 source:c:\users\htech\desktop\system\data_structures\queue\queue.c
+
+1723939285 source:c:\users\htech\desktop\system\data_structures\stack\stack.c
+
+1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
+
+1723939312 source:c:\users\htech\desktop\system\payment_system\server\server.c
+
+1723939328 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
+
+1723995330 source:c:\users\htech\desktop\system\payment_system\card\card.c
+	"../../Libraries/Libraries.h"
+
+1723995305 c:\users\htech\desktop\system\payment_system\card\card.h
+	"../../typedef.h"
+
+1723995247 c:\users\htech\desktop\system\libraries\libraries.h
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"../typedef.h"
+	"../Payment_system/Card/card.h"
+
+1723992496 c:\users\htech\desktop\system\typedef.h
+
+1723995189 source:c:\users\htech\desktop\system\main.c
+	"Libraries/Libraries.h"
+
