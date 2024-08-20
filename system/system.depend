@@ -11,25 +11,35 @@
 
 1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
 
-1723939312 source:c:\users\htech\desktop\system\payment_system\server\server.c
-
-1723939328 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
-
-1723995330 source:c:\users\htech\desktop\system\payment_system\card\card.c
+1724166781 source:c:\users\htech\desktop\system\payment_system\server\server.c
 	"../../Libraries/Libraries.h"
 
-1723995305 c:\users\htech\desktop\system\payment_system\card\card.h
-	"../../typedef.h"
+1724167404 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
+	"../../Libraries/Libraries.h"
 
-1723995247 c:\users\htech\desktop\system\libraries\libraries.h
+1724166781 source:c:\users\htech\desktop\system\payment_system\card\card.c
+	"../../Libraries/Libraries.h"
+
+1724174740 c:\users\htech\desktop\system\payment_system\card\card.h
+
+1724166781 c:\users\htech\desktop\system\libraries\libraries.h
 	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
 	<string.h>
 	<ctype.h>
-	"../typedef.h"
 	"../Payment_system/Card/card.h"
+	"../Payment_system/Terminal/terminal.h"
+	"../Payment_system/Server/server.h"
 
-1723992496 c:\users\htech\desktop\system\typedef.h
+1724158626 c:\users\htech\desktop\system\typedef.h
 
-1723995189 source:c:\users\htech\desktop\system\main.c
+1724159171 source:c:\users\htech\desktop\system\main.c
 	"Libraries/Libraries.h"
+
+1724167312 c:\users\htech\desktop\system\payment_system\terminal\terminal.h
+
+1724174740 c:\users\htech\desktop\system\payment_system\server\server.h
+	"../Terminal/terminal.h"
+	"../Card/card.h"
 

@@ -12,10 +12,10 @@
 /**********************************/
 #if (CPU_TYPE == CPU_TYPE_64)
 typedef unsigned char boolean;
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
-typedef unsigned long long uint64;
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long uint64_t;
 
 typedef signed char sint8;
 typedef signed short sint16;
