@@ -11,5 +11,7 @@
 #include "../Payment_system/Card/card.h"
 #include "../Payment_system/Terminal/terminal.h"
 #include "../Payment_system/Server/server.h"
+#include "../Data_structures/Queue/queue.h"
+#include "../Data_structures/Stack/stack.h"
 
 #endif // _LIBRARIES_H

@@ -5,13 +5,14 @@
 
 1723939244 source:c:\users\htech\desktop\system\data_structures\list\list.c
 
-1723939261 source:c:\users\htech\desktop\system\data_structures\queue\queue.c
+1724264844 source:c:\users\htech\desktop\system\data_structures\queue\queue.c
+	"../../Libraries/Libraries.h"
 
 1723939285 source:c:\users\htech\desktop\system\data_structures\stack\stack.c
 
 1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
 
-1724166781 source:c:\users\htech\desktop\system\payment_system\server\server.c
+1724249697 source:c:\users\htech\desktop\system\payment_system\server\server.c
 	"../../Libraries/Libraries.h"
 
 1724167404 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
@@ -22,7 +23,7 @@
 
 1724174740 c:\users\htech\desktop\system\payment_system\card\card.h
 
-1724166781 c:\users\htech\desktop\system\libraries\libraries.h
+1724264739 c:\users\htech\desktop\system\libraries\libraries.h
 	<stdio.h>
 	<stdint.h>
 	<stdlib.h>
@@ -31,6 +32,8 @@
 	"../Payment_system/Card/card.h"
 	"../Payment_system/Terminal/terminal.h"
 	"../Payment_system/Server/server.h"
+	"../Data_structures/Queue/queue.h"
+	"../Data_structures/Stack/stack.h"
 
 1724158626 c:\users\htech\desktop\system\typedef.h
 
@@ -42,4 +45,10 @@
 1724174740 c:\users\htech\desktop\system\payment_system\server\server.h
 	"../Terminal/terminal.h"
 	"../Card/card.h"
+
+1724264799 c:\users\htech\desktop\system\data_structures\queue\queue.h
+	"../../typedef.h"
+
+1724264835 c:\users\htech\desktop\system\data_structures\stack\stack.h
+	"../../typedef.h"
 
