@@ -1,21 +1,24 @@
 # depslib dependency file v1.0
-1723939182 source:c:\users\htech\desktop\system\application\application.c
+1724295809 source:c:\users\htech\desktop\system\application\application.c
+	"../Libraries/Libraries.h"
+	<time.h>
 
-1723939225 source:c:\users\htech\desktop\system\data_bases\file_handling\file_handling.c
+1724291756 source:c:\users\htech\desktop\system\data_bases\file_handling\file_handling.c
 
 1723939244 source:c:\users\htech\desktop\system\data_structures\list\list.c
 
 1724264844 source:c:\users\htech\desktop\system\data_structures\queue\queue.c
 	"../../Libraries/Libraries.h"
 
-1723939285 source:c:\users\htech\desktop\system\data_structures\stack\stack.c
+1724265046 source:c:\users\htech\desktop\system\data_structures\stack\stack.c
+	"../../Libraries/Libraries.h"
 
 1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
 
-1724249697 source:c:\users\htech\desktop\system\payment_system\server\server.c
+1724291908 source:c:\users\htech\desktop\system\payment_system\server\server.c
 	"../../Libraries/Libraries.h"
 
-1724167404 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
+1724295706 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
 	"../../Libraries/Libraries.h"
 
 1724166781 source:c:\users\htech\desktop\system\payment_system\card\card.c
@@ -23,26 +26,27 @@
 
 1724174740 c:\users\htech\desktop\system\payment_system\card\card.h
 
-1724264739 c:\users\htech\desktop\system\libraries\libraries.h
+1724291764 c:\users\htech\desktop\system\libraries\libraries.h
 	<stdio.h>
 	<stdint.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
+	"../Data_Bases/File_handling/file_handling.h"
 	"../Payment_system/Card/card.h"
 	"../Payment_system/Terminal/terminal.h"
 	"../Payment_system/Server/server.h"
+	"../Application/Application.h"
 	"../Data_structures/Queue/queue.h"
 	"../Data_structures/Stack/stack.h"
 
 1724158626 c:\users\htech\desktop\system\typedef.h
 
-1724159171 source:c:\users\htech\desktop\system\main.c
-	"Libraries/Libraries.h"
+1724292295 source:c:\users\htech\desktop\system\main.c
 
-1724167312 c:\users\htech\desktop\system\payment_system\terminal\terminal.h
+1724292159 c:\users\htech\desktop\system\payment_system\terminal\terminal.h
 
-1724174740 c:\users\htech\desktop\system\payment_system\server\server.h
+1724291706 c:\users\htech\desktop\system\payment_system\server\server.h
 	"../Terminal/terminal.h"
 	"../Card/card.h"
 
@@ -51,4 +55,8 @@
 
 1724264835 c:\users\htech\desktop\system\data_structures\stack\stack.h
 	"../../typedef.h"
+
+1724291356 c:\users\htech\desktop\system\application\application.h
+
+1724291875 c:\users\htech\desktop\system\data_bases\file_handling\file_handling.h
 

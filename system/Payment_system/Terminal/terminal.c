@@ -1,12 +1,13 @@
 #include "../../Libraries/Libraries.h"
 EN_terminalError_t getTransactionDate(ST_terminalData_t *termData){
     uint8_t LocalTransDate[11]={0};
-    printf("\n Enter the transaction date: ");
-    fgets(LocalTransDate,11,stdin);
-    if( (NULL == LocalTransDate) || (LocalTransDate != 10) || (LocalTransDate[2] != '/' || LocalTransDate[5] != '/') ){
+    printf("\n Enter the transaction date[DD/MM/YYYY]: ");
+    scanf("%10s", LocalTransDate);
+    if((strlen(LocalTransDate) != 10) || (LocalTransDate[2] != '/' || LocalTransDate[5] != '/') ){
         return WRONG_DATE;
     }else{
-        strcpy(termData->transactionDate ,LocalTransDate);
+
+       strcpy(termData->transactionDate ,LocalTransDate);
     }
     return TERMINAL_OK;
 }
@@ -46,15 +47,15 @@ EN_terminalError_t isBelowMaxAmount(ST_terminalData_t *termData){
     return TERMINAL_OK;
 }
 
-EN_terminalError_t setMaxAmount(ST_terminalData_t *termData,float maxAmount){
+EN_terminalError_t setMaxAmount(ST_terminalData_t *termData){
     float LocalMaxAmount =0;
-  //  printf("\n Enter transaction maximum amount: ");
-   // scanf("%f", &LocalMaxAmount);
+    printf("\n Enter transaction maximum amount: ");
+    scanf("%f", &LocalMaxAmount);
     if(LocalMaxAmount<=0){
         return INVALID_AMOUNT;
-    }else{
-        termData->maxTransAmount = maxAmount;
     }
+     termData->maxTransAmount = LocalMaxAmount;
+
     return TERMINAL_OK;
 }
 
