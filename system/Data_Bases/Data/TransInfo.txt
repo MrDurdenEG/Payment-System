@@ -1,15 +1,51 @@
 Transactions:-
 	Transaction Sequence Number: 1
-	Transaction Date: 10/10/2001
-	Transaction Amount: 4000.000000
+	Transaction Date: 23/08/2024
+	Transaction Amount: 3900.000000
 	Transactions State: APPROVED
+	Terminal Max Amount: 5000.000000
+	Card holder Name: yousef ahmed elnagar
+	PAN: 4539578763621486
+	Card Expiration Date: 12/27
 Transactions:-
 	Transaction Sequence Number: 2
-	Transaction Date: 10/10/2001
-	Transaction Amount: 400.000000
+	Transaction Date: 01/12/2023
+	Transaction Amount: 15000.000000
 	Transactions State: APPROVED
+	Terminal Max Amount: 20000.000000
+	Card holder Name: yousef ahemd elnagar
+	PAN: 4539578763621486
+	Card Expiration Date: 12/27
 Transactions:-
 	Transaction Sequence Number: 3
-	Transaction Date: 10/10/2001
-	Transaction Amount: 400.000000
+	Transaction Date: 11/12/2023
+	Transaction Amount: 3000.000000
 	Transactions State: APPROVED
+	Terminal Max Amount: 3000.000000
+	Card holder Name: yousef ahmed elnagar
+	PAN: 4539578763621486
+	Card Expiration Date: 12/26
+Transactions:-
+	Transaction Sequence Number: 4
+	Transaction Date: 12/12/2003
+	Transaction Amount: 70.000000
+	Transactions State: 	Terminal Max Amount: 100.000000
+	Card holder Name: yousef ahmed elnagar
+	PAN: 4539578763621486
+	Card Expiration Date: 12/28
+Transactions:-
+	Transaction Sequence Number: 5
+	Transaction Date: 12/12/2003
+	Transaction Amount: 1000.000000
+	Transactions State: 	Terminal Max Amount: 1000.000000
+	Card holder Name: yousef ahemd elnagar
+	PAN: 4485275742308327
+	Card Expiration Date: 12/57
+Transactions:-
+	Transaction Sequence Number: 6
+	Transaction Date: 12/12/2003
+	Transaction Amount: 1000.000000
+	Transactions State: 	Terminal Max Amount: 1000.000000
+	Card holder Name: yousef ahmed elnagar
+	PAN: 4485275742308327
+	Card Expiration Date: 12/56

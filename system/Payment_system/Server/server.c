@@ -15,17 +15,27 @@ void readAccountDB(void)
     }
     uint8_t pan[20];
     float amount;
+    char state[10];
     int i = 0,j;
-    while (fscanf(file, "%f %s", &amount, pan ) == 2)
+        while (fscanf(file, "%f %s %s", &amount, pan, state) == 3)
     {
+
         Account[i].balance = amount;
         strncpy(Account[i].primaryAccountNumber, pan, sizeof(Account[i].primaryAccountNumber));
-        printf("Account %d:\n", i + 1);
+        if (strcmp(state, "RUNNING") == 0)
+        {
+            Account[i].state = RUNNING;
+        }
+        else if (strcmp(state, "BLOCKED") == 0)
+        {
+            Account[i].state = BLOCKED;
+        }printf("Account %d:\n", i + 1);
         printf("Balance: %.6f\n", Account[i].balance);
-        printf("PAN: %s\n\n", Account[i].primaryAccountNumber);
+        printf("PAN: %s\n", Account[i].primaryAccountNumber);
+        printf("state: %d\n\n", Account[i].state);
         i++;
     }
-     if (feof(file))
+      if (feof(file))
     {
         printf("End of file reached.\n");
     }
@@ -33,6 +43,7 @@ void readAccountDB(void)
     {
         printf("Error reading file.\n");
     }
+
     fclose(file);
 }
 
@@ -50,7 +61,11 @@ void updateAccountDB(void)
         {
             break;
         }
-        fprintf(file, "%f %s\n", Account[i].balance, Account[i].primaryAccountNumber);
+        const char *accountStateStrings[] = {
+          "RUNNING",
+          "BLOCKED"
+        };
+        fprintf(file, "%f %s %s\n", Account[i].balance, Account[i].primaryAccountNumber,accountStateStrings[Account[i].state]);
         printf("Updated Account %d: PAN = %s, Balance = %.2f\n", i, Account[i].primaryAccountNumber, Account[i].balance);
     }
 }
@@ -63,19 +78,15 @@ EN_transState_t recieveTransactionData(ST_transaction_t *transData,ST_cardData_t
         transData->transState = DECLINED_STOLEN_CARD;
         return DECLINED_STOLEN_CARD;
     }
-    if(LOW_BALANCE == isAmountAvailable(transData))
+    if(LOW_BALANCE == isAmountAvailable(termData))
     {
         transData->transState = DECLINED_INSUFFECIENT_FUND;
         return DECLINED_INSUFFECIENT_FUND;
     }
-    /*if(BLOCKED_ACCOUNT == isBlockedAccount(Account))
+    if(BLOCKED_ACCOUNT == isBlockedAccount(Account))
     {
         transData->transState = BLOCKED_ACCOUNT_ERROR;
         return BLOCKED_ACCOUNT_ERROR ;
-    }*/
-    if( (SAVING_FAILED == saveTransaction(transData,termData)) )
-    {
-        return INTERNAL_SERVER_ERROR;
     }
     else
     {
@@ -103,7 +114,7 @@ EN_serverError_t isValidAccount(ST_cardData_t *cardData) {
     return ACCOUNT_NOT_FOUND;
 }
 EN_serverError_t isBlockedAccount(ST_accountsDB_t *accountRefrence){
-    if(accountRefrence->state == BLOCKED){
+    if(Account[index].state == BLOCKED){
         return BLOCKED_ACCOUNT;
     }
     return SERVER_OK;
@@ -116,7 +127,7 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t *termData){
     return SERVER_OK;
 }
 
-EN_serverError_t saveTransaction(ST_transaction_t *transData,ST_terminalData_t *termData)
+EN_serverError_t saveTransaction(ST_transaction_t *transData,ST_terminalData_t *termData,ST_cardData_t *cardData)
 {
     file2 = fopen("C:\\Users\\HTech\\Desktop\\system\\Data_Bases\\Data\\TransNumber.txt", "r");
     if (!file2)
@@ -140,7 +151,28 @@ EN_serverError_t saveTransaction(ST_transaction_t *transData,ST_terminalData_t *
     fprintf(file2,"\tTransaction Sequence Number: %d\n", transData->transactionSequenceNumber);
     fprintf(file2,"\tTransaction Date: %s\n",termData->transactionDate);
     fprintf(file2,"\tTransaction Amount: %f\n",termData->transAmount);
-    fprintf(file2,"\tTransactions State: APPROVED\n");
+    fprintf(file2,"\tTransactions State: ");
+    switch (transData->transState) {
+        case APPROVED:
+            fprintf(file1, "APPROVED\n");
+            break;
+        case DECLINED_INSUFFECIENT_FUND:
+            fprintf(file1, "DECLINED_INSUFFECIENT_FUND\n");
+            break;
+        case DECLINED_STOLEN_CARD:
+            fprintf(file1, "DECLINED_STOLEN_CARD\n");
+            break;
+        case BLOCKED_ACCOUNT_ERROR:
+            fprintf(file1, "BLOCKED_ACCOUNT_ERROR\n");
+            break;
+        default:
+            fprintf(file1, "UNKNOWN\n");
+            break;
+    }
+    fprintf(file2,"\tTerminal Max Amount: %f\n",termData->maxTransAmount);
+    fprintf(file2,"\tCard holder Name: %s\n",cardData->CardHolderName);
+    fprintf(file2,"\tPAN: %s\n",cardData->primaryAccountNumber);
+    fprintf(file2,"\tCard Expiration Date: %s\n",cardData->cardExpirationDate);
 
 
     return SERVER_OK;

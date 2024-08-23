@@ -50,9 +50,6 @@ void appStart(void)
     printf("  %s\n", cardData->CardHolderName);
     printf("====================================\n");
 
-
-
-
     RetCard = getCardExpiryDate(cardData);
     while (RetCard != CARD_OK)
     {
@@ -188,10 +185,11 @@ void appStart(void)
 		printf("\n\tAPPROVED\n");
 		printf("\tUPDATING ACCOUNTS DB\n");
 		updateAccountDB();
-	EN_serverError_t RetServ = saveTransaction(transData,termData);
-		if(RetServ == SERVER_OK){
-            printf("\tSAVING TRANSACTION\n");
-		}
+	EN_serverError_t RetServ = saveTransaction(transData,termData,cardData);
+    if(RetServ == SAVING_FAILED){
+        printf("Failed to save data\n\n");
+    }
+    printf("DATA SAVED");
 	}
 
 }
