@@ -29,21 +29,9 @@ void readAccountDB(void)
         else if (strcmp(state, "BLOCKED") == 0)
         {
             Account[i].state = BLOCKED;
-        }printf("Account %d:\n", i + 1);
-        printf("Balance: %.6f\n", Account[i].balance);
-        printf("PAN: %s\n", Account[i].primaryAccountNumber);
-        printf("state: %d\n\n", Account[i].state);
+        }
         i++;
     }
-      if (feof(file))
-    {
-        printf("End of file reached.\n");
-    }
-    else if (ferror(file))
-    {
-        printf("Error reading file.\n");
-    }
-
     fclose(file);
 }
 
@@ -66,7 +54,7 @@ void updateAccountDB(void)
           "BLOCKED"
         };
         fprintf(file, "%f %s %s\n", Account[i].balance, Account[i].primaryAccountNumber,accountStateStrings[Account[i].state]);
-        printf("Updated Account %d: PAN = %s, Balance = %.2f\n", i, Account[i].primaryAccountNumber, Account[i].balance);
+
     }
 }
 
@@ -91,9 +79,9 @@ EN_transState_t recieveTransactionData(ST_transaction_t *transData,ST_cardData_t
     else
     {
          transData->transState = APPROVED;
-        printf("before : %f  %f \n",Account[index].balance,termData->transAmount);
+
         Account[index].balance -= termData->transAmount;
-        printf("after : %f  %f \n",Account[index].balance,termData->transAmount);
+
     }
 
     return APPROVED;
@@ -154,25 +142,52 @@ EN_serverError_t saveTransaction(ST_transaction_t *transData,ST_terminalData_t *
     fprintf(file2,"\tTransactions State: ");
     switch (transData->transState) {
         case APPROVED:
-            fprintf(file1, "APPROVED\n");
+            fprintf(file2, "APPROVED\n");
             break;
         case DECLINED_INSUFFECIENT_FUND:
-            fprintf(file1, "DECLINED_INSUFFECIENT_FUND\n");
+            fprintf(file2, "DECLINED_INSUFFECIENT_FUND\n");
             break;
         case DECLINED_STOLEN_CARD:
-            fprintf(file1, "DECLINED_STOLEN_CARD\n");
+            fprintf(file2, "DECLINED_STOLEN_CARD\n");
             break;
         case BLOCKED_ACCOUNT_ERROR:
-            fprintf(file1, "BLOCKED_ACCOUNT_ERROR\n");
+            fprintf(file2, "BLOCKED_ACCOUNT_ERROR\n");
             break;
         default:
-            fprintf(file1, "UNKNOWN\n");
+            fprintf(file2, "UNKNOWN\n");
             break;
     }
     fprintf(file2,"\tTerminal Max Amount: %f\n",termData->maxTransAmount);
     fprintf(file2,"\tCard holder Name: %s\n",cardData->CardHolderName);
     fprintf(file2,"\tPAN: %s\n",cardData->primaryAccountNumber);
     fprintf(file2,"\tCard Expiration Date: %s\n",cardData->cardExpirationDate);
+
+    printf("Transactions:-\n");
+    printf("\tTransaction Sequence Number: \033[1;36m%d\033[0m\n", transData->transactionSequenceNumber);
+    printf("\tTransaction Date: \033[1;36m%s\033[0m\n",termData->transactionDate);
+    printf("\tTransaction Amount: \033[1;36m%f\033[0m\n",termData->transAmount);
+    printf("\tTransactions State: ");
+    switch (transData->transState) {
+        case APPROVED:
+            printf("APPROVED\n");
+            break;
+        case DECLINED_INSUFFECIENT_FUND:
+            printf("DECLINED_INSUFFECIENT_FUND\n");
+            break;
+        case DECLINED_STOLEN_CARD:
+            printf("DECLINED_STOLEN_CARD\n");
+            break;
+        case BLOCKED_ACCOUNT_ERROR:
+            printf("BLOCKED_ACCOUNT_ERROR\n");
+            break;
+        default:
+            printf("UNKNOWN\n");
+            break;
+    }
+    printf("\tTerminal Max Amount: \033[1;36m%f\033[0m\n",termData->maxTransAmount);
+    printf("\tCard holder Name: \033[1;36m%s\033[0m\n",cardData->CardHolderName);
+    printf("\tPAN: \033[1;36m%s\033[0m\n",cardData->primaryAccountNumber);
+    printf("\tCard Expiration Date: \033[1;36m%s\033[0m\n\n",cardData->cardExpirationDate);
 
 
     return SERVER_OK;

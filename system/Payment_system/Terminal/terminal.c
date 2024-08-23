@@ -3,7 +3,7 @@
 EN_terminalError_t getTransactionDate(ST_terminalData_t *termData)
 {
     uint8_t LocalTransDate[11]= {0};
-    printf("\n Enter the transaction date[DD/MM/YYYY]: ");
+    printf("\nPlease enter the transaction date[DD/MM/YYYY]: ");
     scanf("%10s", LocalTransDate);
     uint16_t length = strlen(LocalTransDate);
     if((length != 10) || (LocalTransDate[2] != '/' || LocalTransDate[5] != '/') )
@@ -42,7 +42,7 @@ EN_terminalError_t isCardExpired(ST_cardData_t *cardData, ST_terminalData_t *ter
 EN_terminalError_t getTransactionAmount(ST_terminalData_t *termData)
 {
     float localTransAmount=0;
-    printf("\n Enter transaction amount: ");
+    printf("\nPlease enter transaction amount: ");
     scanf("%f", &localTransAmount);
     if(localTransAmount<=0)
     {
@@ -67,7 +67,7 @@ EN_terminalError_t isBelowMaxAmount(ST_terminalData_t *termData)
 EN_terminalError_t setMaxAmount(ST_terminalData_t *termData)
 {
     float LocalMaxAmount =0;
-    printf("\n Enter transaction maximum amount: ");
+    printf("\nPlease enter transaction maximum amount: ");
     scanf("%f", &LocalMaxAmount);
     if(LocalMaxAmount<=0)
     {

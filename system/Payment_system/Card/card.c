@@ -55,7 +55,7 @@ EN_cardError_t getCardExpiryDate(ST_cardData_t *cardData)
 
 EN_cardError_t getCardPAN(ST_cardData_t *cardData){
     uint8_t LocalCardPAN[20] = {0};
-    printf("\n Enter the card primary account number: ");
+    printf("\nPlease enter the card primary account number: ");
     fgets(LocalCardPAN, 20, stdin);
     uint8_t length = strlen(LocalCardPAN);
 
