@@ -63,18 +63,31 @@ Reading Accounts Data Base
 ====================================
 Successfully loaded Accounts Data Base
 
-Please enter cardholder name: John Doe \n
-Please enter card expiration date (MM/YY): 12/25\n
-Please enter card PAN: 1234567890123456\n
-Validate card PAN\n
-Please enter card transaction date(DD/MM/YYYY):01/12/2023\n
-Check if the card is expired\n
-Please enter maximum transaction amount : 5000\n
-Please enter transaction amount: 1000\n
-Check if the transaction amount is below the maximum allowed\n
-Process the transaction\n
-Transaction approved!\n
-Updating Accounts in Data Base...\n
+Please enter cardholder name: John Doe
+
+Please enter card expiration date (MM/YY): 12/25
+
+Please enter card PAN: 1234567890123456
+
+Validate card PAN
+
+Please enter card transaction date(DD/MM/YYYY):01/12/2023
+
+Check if the card is expired
+
+Please enter maximum transaction amount : 5000
+
+Please enter transaction amount: 1000
+
+Check if the transaction amount is below the maximum allowed
+
+Process the transaction
+
+Transaction approved!
+
+Updating Accounts in Data Base...
+
+Thank you for using our system!
 
 Thank you for using our system!\n
 ====================================
