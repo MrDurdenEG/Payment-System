@@ -1,8 +1,9 @@
 #include "../../Libraries/Libraries.h"
 
 
-int index = -1;
-ST_accountsDB_t Account[255];
+//extern int
+index = -1 ;
+static ST_accountsDB_t Account[255];
 
 void readAccountDB(void)
 {
@@ -15,18 +16,22 @@ void readAccountDB(void)
     uint8_t pan[20];
     float amount;
     int i = 0,j;
-    while (fscanf(file, "%f %s", &amount, pan))
+    while (fscanf(file, "%f %s", &amount, pan ) == 2)
     {
-        if (i > 0 && Account[i - 1].balance == amount && Account[i - 1].primaryAccountNumber[6] == pan[6])
-        {
-            break;
-        }
         Account[i].balance = amount;
-        for (j = 0; j < 20; j++)
-        {
-            Account[i].primaryAccountNumber[j] = pan[j];
-        }
+        strncpy(Account[i].primaryAccountNumber, pan, sizeof(Account[i].primaryAccountNumber));
+        printf("Account %d:\n", i + 1);
+        printf("Balance: %.6f\n", Account[i].balance);
+        printf("PAN: %s\n\n", Account[i].primaryAccountNumber);
         i++;
+    }
+     if (feof(file))
+    {
+        printf("End of file reached.\n");
+    }
+    else if (ferror(file))
+    {
+        printf("Error reading file.\n");
     }
     fclose(file);
 }
@@ -46,49 +51,57 @@ void updateAccountDB(void)
             break;
         }
         fprintf(file, "%f %s\n", Account[i].balance, Account[i].primaryAccountNumber);
+        printf("Updated Account %d: PAN = %s, Balance = %.2f\n", i, Account[i].primaryAccountNumber, Account[i].balance);
     }
 }
 
 
-EN_transState_t recieveTransactionData(ST_transaction_t *transData)
+EN_transState_t recieveTransactionData(ST_transaction_t *transData,ST_cardData_t *cardData,ST_terminalData_t *termData)
 {
-    if(ACCOUNT_NOT_FOUND == isValidAccount(&(transData->cardHolderData)))
+    if(ACCOUNT_NOT_FOUND == isValidAccount(cardData))
     {
         transData->transState = DECLINED_STOLEN_CARD;
         return DECLINED_STOLEN_CARD;
     }
-    if(LOW_BALANCE == isAmountAvailable(&(transData->terminalData)))
+    if(LOW_BALANCE == isAmountAvailable(transData))
     {
         transData->transState = DECLINED_INSUFFECIENT_FUND;
         return DECLINED_INSUFFECIENT_FUND;
     }
-    if(BLOCKED_ACCOUNT == isBlockedAccount(Account))
+    /*if(BLOCKED_ACCOUNT == isBlockedAccount(Account))
     {
         transData->transState = BLOCKED_ACCOUNT_ERROR;
         return BLOCKED_ACCOUNT_ERROR ;
-    }
-    if( (SAVING_FAILED == saveTransaction(transData)) )
+    }*/
+    if( (SAVING_FAILED == saveTransaction(transData,termData)) )
     {
         return INTERNAL_SERVER_ERROR;
     }
     else
     {
-        transData->transState = APPROVED;
-        Account[index].balance -= transData->terminalData.transAmount;
+         transData->transState = APPROVED;
+        printf("before : %f  %f \n",Account[index].balance,termData->transAmount);
+        Account[index].balance -= termData->transAmount;
+        printf("after : %f  %f \n",Account[index].balance,termData->transAmount);
     }
 
     return APPROVED;
 }
 
-EN_serverError_t isValidAccount(ST_cardData_t *cardData){
 
-    if( (0 == strcmp(cardData->primaryAccountNumber, Account->primaryAccountNumber)) )
-        {
+EN_serverError_t isValidAccount(ST_cardData_t *cardData) {
+    for (int i = 0; i < 255; i++) {
+        if (Account[i].primaryAccountNumber[0] == '\0') {
+            printf("There are no more accounts in the database.\n\n\n");
+            break; // No more accounts in the database
+        }
+        if (strcmp(cardData->primaryAccountNumber, Account[i].primaryAccountNumber) == 0) {
+            index = i;;
             return SERVER_OK;
         }
+    }
     return ACCOUNT_NOT_FOUND;
 }
-
 EN_serverError_t isBlockedAccount(ST_accountsDB_t *accountRefrence){
     if(accountRefrence->state == BLOCKED){
         return BLOCKED_ACCOUNT;
@@ -103,60 +116,34 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t *termData){
     return SERVER_OK;
 }
 
-EN_serverError_t saveTransaction(ST_transaction_t *transData)
+EN_serverError_t saveTransaction(ST_transaction_t *transData,ST_terminalData_t *termData)
 {
     file2 = fopen("C:\\Users\\HTech\\Desktop\\system\\Data_Bases\\Data\\TransNumber.txt", "r");
     if (!file2)
     {
         return SAVING_FAILED;
     }
-    int NumberOfTrans;
+    int NumberOfTrans=0;
     fscanf(file2, "%d", &NumberOfTrans);
     fclose(file2);
-
     file2 = fopen("C:\\Users\\HTech\\Desktop\\system\\Data_Bases\\Data\\TransNumber.txt", "w");
-    fprintf(file2, "%d", NumberOfTrans+1);
+    fprintf(file2, "%d", ++NumberOfTrans);
     fclose(file2);
-    transData->transactionSequenceNumber = NumberOfTrans+1;
-    file1 = fopen("C:\\Users\\HTech\\Desktop\\system\\Data_Bases\\Data\\TransInfo.txt", "a");
-    if (!file1)
+    transData->transactionSequenceNumber = NumberOfTrans;
+    file2 = fopen("C:\\Users\\HTech\\Desktop\\system\\Data_Bases\\Data\\TransInfo.txt", "a");
+    if (!file2)
     {
         return SAVING_FAILED;
     }
-    fprintf(file1,"Transactions:-\n");
-    fprintf(file1,"\tTransaction Sequence Number: %d\n", transData->transactionSequenceNumber);
-    fprintf(file1,"\tTransaction Date: %s\n",transData->terminalData.transactionDate);
-    fprintf(file1,"\tTransaction Amount: %s\n",transData->terminalData.transAmount);
-    fprintf(file1,"\tTransactions State: ");
-    if (transData->transState == APPROVED)
-    {
-        fprintf(file1, "APPROVED\n");
-    }
-    else if (transData->transState == DECLINED_INSUFFECIENT_FUND)
-    {
-        fprintf(file1, "DECLINED_INSUFFECIENT_FUND\n");
-    }
-    else if (transData->transState == DECLINED_STOLEN_CARD)
-    {
-        fprintf(file1, "DECLINED_STOLEN_CARD\n");
-    }
-    else if (transData->transState == BLOCKED_ACCOUNT_ERROR)
-    {
-        fprintf(file1, "BLOCKED_ACCOUNT_ERROR\n");
-    }
-    fprintf(file1,"\tTerminal Max Amount:%f\n", transData->terminalData.maxTransAmount);
-    fprintf(file1,"\tCard Holder Name: %s\n",transData->cardHolderData.CardHolderName);
-    fprintf(file1,"\tPAN: %s\n",transData->cardHolderData.primaryAccountNumber);
-    fprintf(file1,"\tCard Expiration Date: %s\n",transData->cardHolderData.cardExpirationDate);
-    fprintf(file1,"##################################\n");
-    fclose(file1);
+
+    fprintf(file2,"Transactions:-\n");
+    fprintf(file2,"\tTransaction Sequence Number: %d\n", transData->transactionSequenceNumber);
+    fprintf(file2,"\tTransaction Date: %s\n",termData->transactionDate);
+    fprintf(file2,"\tTransaction Amount: %f\n",termData->transAmount);
+    fprintf(file2,"\tTransactions State: APPROVED\n");
+
 
     return SERVER_OK;
 }
 
-void listSavedTransactions(void)
-{
-
-
-}
 

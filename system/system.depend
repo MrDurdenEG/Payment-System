@@ -1,7 +1,6 @@
 # depslib dependency file v1.0
-1724295809 source:c:\users\htech\desktop\system\application\application.c
+1724378743 source:c:\users\htech\desktop\system\application\application.c
 	"../Libraries/Libraries.h"
-	<time.h>
 
 1724291756 source:c:\users\htech\desktop\system\data_bases\file_handling\file_handling.c
 
@@ -15,13 +14,13 @@
 
 1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
 
-1724291908 source:c:\users\htech\desktop\system\payment_system\server\server.c
+1724380381 source:c:\users\htech\desktop\system\payment_system\server\server.c
 	"../../Libraries/Libraries.h"
 
-1724295706 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
+1724370744 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
 	"../../Libraries/Libraries.h"
 
-1724166781 source:c:\users\htech\desktop\system\payment_system\card\card.c
+1724344636 source:c:\users\htech\desktop\system\payment_system\card\card.c
 	"../../Libraries/Libraries.h"
 
 1724174740 c:\users\htech\desktop\system\payment_system\card\card.h
@@ -46,7 +45,7 @@
 
 1724292159 c:\users\htech\desktop\system\payment_system\terminal\terminal.h
 
-1724291706 c:\users\htech\desktop\system\payment_system\server\server.h
+1724378753 c:\users\htech\desktop\system\payment_system\server\server.h
 	"../Terminal/terminal.h"
 	"../Card/card.h"
 
