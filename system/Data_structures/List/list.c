@@ -1,4 +1,3 @@
-
 #include "../../Libraries/Libraries.h"
 
  AccountNode* head = NULL;

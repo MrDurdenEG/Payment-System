@@ -1,5 +1,4 @@
 
-
 #include "../Libraries/Libraries.h"
 
 void appStart(void)
@@ -147,6 +146,7 @@ void appStart(void)
     free(termData);
     free(transData);
 }
+
 
 
 

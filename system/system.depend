@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1724441368 source:c:\users\htech\desktop\system\application\application.c
+1724442117 source:c:\users\htech\desktop\system\application\application.c
 	"../Libraries/Libraries.h"
 
 1724291756 source:c:\users\htech\desktop\system\data_bases\file_handling\file_handling.c
 
-1723939244 source:c:\users\htech\desktop\system\data_structures\list\list.c
+1724458051 source:c:\users\htech\desktop\system\data_structures\list\list.c
+	"../../Libraries/Libraries.h"
 
 1724264844 source:c:\users\htech\desktop\system\data_structures\queue\queue.c
 	"../../Libraries/Libraries.h"
@@ -14,7 +15,7 @@
 
 1723993993 source:c:\users\htech\desktop\system\libraries\libraries.c
 
-1724440470 source:c:\users\htech\desktop\system\payment_system\server\server.c
+1724458240 source:c:\users\htech\desktop\system\payment_system\server\server.c
 	"../../Libraries/Libraries.h"
 
 1724440747 source:c:\users\htech\desktop\system\payment_system\terminal\terminal.c
@@ -25,7 +26,7 @@
 
 1724174740 c:\users\htech\desktop\system\payment_system\card\card.h
 
-1724291764 c:\users\htech\desktop\system\libraries\libraries.h
+1724457207 c:\users\htech\desktop\system\libraries\libraries.h
 	<stdio.h>
 	<stdint.h>
 	<stdlib.h>
@@ -38,14 +39,15 @@
 	"../Application/Application.h"
 	"../Data_structures/Queue/queue.h"
 	"../Data_structures/Stack/stack.h"
+	"../Data_structures/List/list.h"
 
 1724158626 c:\users\htech\desktop\system\typedef.h
 
-1724441422 source:c:\users\htech\desktop\system\main.c
+1724452493 source:c:\users\htech\desktop\system\main.c
 
 1724292159 c:\users\htech\desktop\system\payment_system\terminal\terminal.h
 
-1724423343 c:\users\htech\desktop\system\payment_system\server\server.h
+1724457793 c:\users\htech\desktop\system\payment_system\server\server.h
 	"../Terminal/terminal.h"
 	"../Card/card.h"
 
@@ -58,4 +60,6 @@
 1724291356 c:\users\htech\desktop\system\application\application.h
 
 1724291875 c:\users\htech\desktop\system\data_bases\file_handling\file_handling.h
+
+1724458051 c:\users\htech\desktop\system\data_structures\list\list.h
 
