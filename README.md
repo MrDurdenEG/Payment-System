@@ -6,8 +6,6 @@ This project is a simple C-based transaction system that simulates the process o
 
 (there is some file and folders i didnt use them, don't care about 'em ,thanks )
 
-(there is some file and folders i didnt use them, don't care about 'em ,thanks )
-
 ## Features
 
 - **Card Data Validation**: The system checks the validity of cardholder names, expiration dates, and PANs (Primary Account Numbers).
