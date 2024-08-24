@@ -15,5 +15,6 @@
 #include "../Application/Application.h"
 #include "../Data_structures/Queue/queue.h"
 #include "../Data_structures/Stack/stack.h"
+#include "../Data_structures/List/list.h"
 
 #endif // _LIBRARIES_H
