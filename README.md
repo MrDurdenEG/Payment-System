@@ -2,16 +2,19 @@
 
 ## Overview
 
-This project is a simple C-based transaction system that simulates the process of handling card transactions, validating card details, and managing account balances. The system reads account data from a file, processes transactions, and updates the account database accordingly.
-
+This project is a simple C-based transaction system that simulates the process of handling card transactions, validating card details, and managing account balances. The system reads account data from a file, processes transactions, and updates the account database accordingly. The project leverages a linked list data structure to efficiently manage account data in memory.
 
 (there is some file and folders i didnt use them, don't care about 'em ,thanks )
+
+(there is some file and folders i didnt use them, don't care about 'em ,thanks )
+
 ## Features
 
 - **Card Data Validation**: The system checks the validity of cardholder names, expiration dates, and PANs (Primary Account Numbers).
 - **Transaction Processing**: The system processes transactions by checking card expiration, comparing transaction amounts with maximum allowed amounts, and verifying account balances.
 - **Account Status**: The system can detect blocked accounts and handle them appropriately.
 - **File I/O Operations**: Account data is read from and written to files, ensuring data persistence.
+- **Linked List Management**: Account data is stored and managed using a linked list, which allows for efficient dynamic memory management and easier data manipulation.
 
 ## Project Structure
 
@@ -19,7 +22,7 @@ This project is a simple C-based transaction system that simulates the process o
 - **Source/**: Contains the source code for the application.
 - **Data/**: Contains account and transaction data files used by the application.
 - **main.c**: The entry point of the application.
-- **app.c**: Contains the core application logic.
+- **app.c**: Contains the core application logic, including linked list operations.
 
 ## How to Build and Run
 
@@ -27,19 +30,12 @@ This project is a simple C-based transaction system that simulates the process o
 
    ```bash
    gcc -o transaction_system main.c app.c ...
+
    ```
 
-   Replace `...` with any other source files in the project.
+2. **Account Data File**: Ensure that your account data file is present in the specified directory (e.g., `Data/Accounts.txt`) and is formatted correctly. The format should include the account balance, account status (RUNNING/BLOCKED), and PAN.
 
-2. **Run the executable**:
-
-   ```bash
-   ./transaction_system
-   ```
-
-3. **Account Data File**: Ensure that your account data file is present in the specified directory (e.g., `Data/Accounts.txt`) and is formatted correctly. The format should include the account balance, account status (RUNNING/BLOCKED), and PAN.
-
-4. **Transaction Data File**: The transaction data is stored in a file (e.g., `Data/TransInfo.txt`). Make sure this file is accessible and writable.
+3. **Transaction Data File**: The transaction data is stored in a file (e.g., `Data/TransInfo.txt`). Make sure this file is accessible and writable.
 
 ## Usage
 
@@ -58,11 +54,12 @@ You can customize the application by modifying the source code. Key areas for cu
 
 Upon running the program, you might see the following output:
 
-WELCOME TO THE TRANSACTION SYSTEM
-====================================
+# WELCOME TO THE TRANSACTION SYSTEM
+
 Initializing the application...
-Reading Accounts Data Base
-====================================
+
+# Reading Accounts Data Base
+
 Successfully loaded Accounts Data Base
 
 Please enter cardholder name: John Doe
@@ -89,8 +86,8 @@ Transaction approved!
 
 Updating Accounts in Data Base...
 
-Thank you for using our system!
+Transaction Data info saved in AccountDB.txt
 
-Thank you for using our system!\n
+# Thank you for using our system!
+
 ====================================
-
